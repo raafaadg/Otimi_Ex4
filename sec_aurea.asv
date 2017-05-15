@@ -11,9 +11,9 @@ while(erro>1e-3)    %Execute enquanto e erro for menor que 10^-3
        u(it+1)=alfa(it);    % u seguinte recebe Alfa anterior
        alfa(it+1)=a(it+1)+(1-au)*(b(it+1)-a(it+1)); % Calcula o novo Alfa
    else
-       a(it+1)=alfa(it);    % a seguinte recebe Alfa anterior
-       b(it+1)=b(it);       % b seguinte recebe b anterior
-       alfa(it+1)=u(it);    % Alfa seguinte recebe u anterior
+       a(it+1)=alfa(it);    % a seguinte recebe a anterior
+       b(it+1)=b(it);       % b seguinte recebe u anterior
+       alfa(it+1)=u(it);    % a seguinte recebe Alfa anterior
        u(it+1)=a(it+1)+au*(b(it+1)-a(it+1));    % Calcula o novo u
    end
    erro(it)=abs(double(f(b(it)))-double(f(a(it))));

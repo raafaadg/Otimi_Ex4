@@ -15,9 +15,8 @@ while(erro(it)>1e-3)
    elseif(falfa==0) 
        disp('ALFA = 0');
    end
-   disp('ERRO :');
    erro(it+1)=abs(double(f(b(it)))-double(f(a(it))));
-   disp(erro(it));
+   disp(['Iteração: ' num2str(it) ' ERRO :' num2str(erro(it))]);
    it=it+1;
 end
 disp('FIM!');
