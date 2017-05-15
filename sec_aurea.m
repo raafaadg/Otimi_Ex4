@@ -1,4 +1,4 @@
-function [] = sec_aurea(f,a,b)
+function [a,b,alfa] = sec_aurea(f,a,b)
 au=0.618;   %Denife o valor Aureo
 it=1;       %Variável para controlar as iterações
 alfa(it)=a(it)+(1-au)*(b(it)-a(it));    %Calcula Alfa1
@@ -17,8 +17,11 @@ while(erro>1e-3)    %Execute enquanto e erro for menor que 10^-3
        u(it+1)=a(it+1)+au*(b(it+1)-a(it+1));    % Calcula o novo u
    end
    erro(it)=abs(double(f(b(it)))-double(f(a(it))));
-   disp(['Iteração: ' num2str(it) ' ERRO :' num2str(erro(it))]);
+   disp(['Iteração nº ' num2str(it) ' -> ERRO : ' num2str(erro(it)) ...
+       ' [ a = ' num2str(a(it)) ' , b = ' num2str(b(it)) ...
+       ', Alfa = ' num2str(alfa(it)) ' ]']);
    it=it+1;
 end
+disp('------------------------------------------------------------------');
 disp('FIM!');
 end
