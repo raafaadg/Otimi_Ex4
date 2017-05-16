@@ -10,7 +10,7 @@ b=12;    %Valor inicial para o ponto B
 plot(x,f(x),'r')    %Plota a função problema
 grid on;    %Habilita o grid
 hold on;    %Mantem o plot
-metodo=1;   % 0=Bisseção; 1=Seção Aurea
+metodo=0;   % 0=Bisseção; 1=Seção Aurea
 if (metodo==1)
     met='Seção Aurea';
 else

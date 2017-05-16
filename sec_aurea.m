@@ -3,7 +3,8 @@ au=0.618;   %Denife o valor Aureo
 it=1;       %Variável para controlar as iterações
 alfa(it)=a(it)+(1-au)*(b(it)-a(it));    %Calcula Alfa1
 u(it)=a(it)+au*(b(1)-a(1));             %Calcula u1
-erro(it)=abs(double(f(b(it)))-double(f(a(it)))); %Calcula erro inicial
+% erro(it)=abs(double(f(b(it)))-double(f(a(it)))); %Calcula erro inicial
+erro(it)=abs(b(it)-a(it));
 while(erro>1e-3)    %Execute enquanto e erro for menor que 10^-3
    if(double(f(alfa(it)))<double(f(u(it)))) %Se Alfa < u
        a(it+1)=a(it);       % a seguinte recebe a anterior
@@ -16,7 +17,8 @@ while(erro>1e-3)    %Execute enquanto e erro for menor que 10^-3
        alfa(it+1)=u(it);    % Alfa seguinte recebe u anterior
        u(it+1)=a(it+1)+au*(b(it+1)-a(it+1));    % Calcula o novo u
    end
-   erro(it)=abs(double(f(b(it)))-double(f(a(it))));
+%    erro(it)=abs(double(f(b(it)))-double(f(a(it))));
+   erro(it+1)=abs(b(it)-a(it));
    disp(['Iteração nº ' num2str(it) ' -> ERRO : ' num2str(erro(it)) ...
        ' [ a = ' num2str(a(it)) ' , b = ' num2str(b(it)) ...
        ', Alfa = ' num2str(alfa(it)) ', Mi(u) = ' num2str(u(it)) ...
