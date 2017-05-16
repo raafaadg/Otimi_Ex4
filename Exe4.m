@@ -1,5 +1,5 @@
 close all  %Fecha todas as janelas
-clear all  %Limpa a memória
+%clear all  %Limpa a memória
 clc        %Limpa o workspace
 syms x; %Atribui a 'x' a propriedade de simbolo do sistema para criar a func
 f(x)=x^4-15*x^3+12*x^2-90*x;    %Função Problema
@@ -10,7 +10,7 @@ b=12;    %Valor inicial para o ponto B
 plot(x,f(x),'r')    %Plota a função problema
 grid on;    %Habilita o grid
 hold on;    %Mantem o plot
-metodo=0;   % 0=Bisseção; 1=Seção Aurea
+metodo=1;   % 0=Bisseção; 1=Seção Aurea
 if (metodo==1)
     met='Seção Aurea';
 else
