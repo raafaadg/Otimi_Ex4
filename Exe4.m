@@ -27,8 +27,7 @@ switch metodo  %Seleciona o método
         for k=1:size(LAMB,2)
             Names(k)={sprintf('Iteração nº%d',k)};
         end
-        T = table(A(1,1:end-1)',B(1,1:end-1)',LAMB',double(f(LAMB')),...
-            ERRO(1,1:end-1)','VariableName',Vars,'RowNames',Names);
+        T = table(A',B',LAMB',double(f(LAMB')),ERRO','VariableName',Vars,'RowNames',Names);
     case 1
         [A,B,LAMB,U,ERRO]=sec_aurea(f,a,b);   %Método da Seção Aurea %f=função, a=ponto inical, b=ponto inicial
         Vars={'a' 'b' 'Lambda' 'Mi_u' 'f_lamb' 'f_mi' 'Erro'};
