@@ -1,5 +1,5 @@
 close all  %Fecha todas as janelas
-%clear all  %Limpa a memória
+clear all  %Limpa a memória
 clc        %Limpa o workspace
 syms x; %Atribui a 'x' a propriedade de simbolo do sistema para criar a func
 f(x)=x^4-15*x^3+12*x^2-90*x;    %Função Problema
@@ -21,8 +21,23 @@ disp(['Método da ' met ' selecionado! Os pontos [a,b] iniciais são [' ...
 disp('------------------------------------------------------------------');
 switch metodo  %Seleciona o método
     case 0
-        [A,B,ALFA]=bissecao(f,a,b);    %Método da Bisseção %f=função, a=ponto inical, b=ponto inicial
+        [A,B,LAMB,ERRO]=bissecao(f,a,b);    %Método da Bisseção %f=função, a=ponto inical, b=ponto inicial
+        Vars={'a' 'b' 'Lambda' 'f_lamb' 'Erro'};
+        Names={num2str(zeros(1,size(LAMB,2)))};
+        for k=1:size(LAMB,2)
+            Names(k)={sprintf('Iteração nº%d',k)};
+        end
+        T = table(A(1,1:end-1)',B(1,1:end-1)',LAMB',double(f(LAMB')),...
+            ERRO(1,1:end-1)','VariableName',Vars,'RowNames',Names);
     case 1
-        [A,B,ALFA]=sec_aurea(f,a,b);   %Método da Seção Aurea %f=função, a=ponto inical, b=ponto inicial
+        [A,B,LAMB,U,ERRO]=sec_aurea(f,a,b);   %Método da Seção Aurea %f=função, a=ponto inical, b=ponto inicial
+        Vars={'a' 'b' 'Lambda' 'Mi_u' 'f_lamb' 'f_mi' 'Erro'};
+        Names={num2str(zeros(1,size(LAMB,2)))};
+        for k=1:size(LAMB,2)
+            Names(k)={sprintf('Iteração nº%d',k)};
+        end
+        T = table(A',B',LAMB',U',double(f(LAMB')),double(f(U')),ERRO',...
+            'VariableName',Vars,'RowNames',Names);
 end
-plot(A,f(A),'go',B,f(B),'yo',ALFA,f(ALFA),'x')
+plot(A,f(A),'go',B,f(B),'yo',LAMB,f(LAMB),'x')
+disp(T);
