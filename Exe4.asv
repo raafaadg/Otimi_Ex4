@@ -41,4 +41,4 @@ switch metodo  %Seleciona o método
 end
 plot(A,f(A),'go',B,f(B),'yo',LAMB,f(LAMB),'x')
 disp(T);
-format short
+format
