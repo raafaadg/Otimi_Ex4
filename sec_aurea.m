@@ -1,11 +1,16 @@
-function [a,b,lamb,u,erro] = sec_aurea(f,a,b)
+% clear all
+% clc
+syms alfa
+f(alfa)=887.635*alfa^2-285.666*alfa+10*(log(-8.1667*alfa+2)+log(-34.1665*alfa+3));
+a=0;
+b=1;
 au=0.618;   %Denife o valor Aureo
 it=1;       %Variável para controlar as iterações
 lamb(it)=a(it)+(1-au)*(b(it)-a(it));    %Calcula Alfa1
 u(it)=a(it)+au*(b(1)-a(1));             %Calcula u1
 % erro(it)=abs(double(f(b(it)))-double(f(a(it)))); %Calcula erro inicial
-% erro(it)=abs(b(it)-a(it));
-erro(it)=abs(double(f(lamb(it)))-double(f(u(it))));
+erro(it)=abs(b(it))-abs(a(it));
+% erro(it)=abs(double(f(lamb(it)))-double(f(u(it))));
 while(erro(it)>1e-3)    %Execute enquanto e erro for menor que 10^-3
    if(double(f(lamb(it)))<double(f(u(it)))) %Se Alfa < u
        a(it+1)=a(it);       % a seguinte recebe a anterior
@@ -27,10 +32,10 @@ while(erro(it)>1e-3)    %Execute enquanto e erro for menor que 10^-3
        num2str(double(f(u(it)))) ' ]']);
    it=it+1;
 %    erro(it)=abs(double(f(b(it)))-double(f(a(it))));
-%    erro(it)=abs(b(it)-a(it));
-   erro(it)=abs(double(f(lamb(it)))-double(f(u(it))));
+   erro(it)=abs(b(it)-a(it));
+%    erro(it)=abs(double(f(lamb(it)))-double(f(u(it))));
 
 end
 disp('------------------------------------------------------------------');
 disp('FIM!');
-end
+% end
